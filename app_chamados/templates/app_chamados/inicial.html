@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todas os Chamados</title>
+  </head>
+  <body>
+    {% if user.is_authenticated  %}
+      Olá {{ user.username }} seja bem vindo. <a href="{% url 'logout' %}">Sair so sistema</a>
+    {% else %}
+      <a href="{% url 'login' %}">Entrar no sistema</a>
+    {% endif %}
+    <h1>Todas os Chamados</h1>
+    <ul>
+      {% for chamado in todas_chamados %}
+          <li><a href='detalhe/{{ chamado.id }}/'> {{ chamado.titulo }}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
